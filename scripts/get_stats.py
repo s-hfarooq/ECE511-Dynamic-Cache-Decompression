@@ -73,6 +73,8 @@ if __name__ == "__main__":
         choices=["percent", "metric"],
         help="sort by percent or metric",
     )
+    parser.add_argument("-f", "--file", type=str, default="results.csv",help="path to output file")
+    parser.add_argument("-p", "--plot", action="store_true", help="plot the results")
     args = parser.parse_args()
 
     with open(args.compressed, "r") as f:
@@ -98,6 +100,12 @@ if __name__ == "__main__":
         if over_threshold(percent_diff, args.threshold):
             percent_diff = round(percent_diff * 100, 3)
             rows.append((metric, compressed_val, no_compress_val, percent_diff))
+            if args.plot:
+                # save a bar plot of comperssed_val vs no_compress_val with the title as the metric
+                plt.bar(["compressed", "no-compressed"], [compressed_val, no_compress_val])
+                plt.title(metric)
+                plt.show()
+                
 
     if args.sort.lower() == "percent":
         # x[3] = percent difference
@@ -110,3 +118,9 @@ if __name__ == "__main__":
     df = pd.DataFrame(rows, columns=col_names)
 
     print(tabulate(df, headers="keys", tablefmt="psql"))
+    # save to args.file
+    df.to_csv(args.file, index=False)
+
+    # save all as a bar chart 
+    
+

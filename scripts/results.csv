@@ -1,0 +1,17 @@
+metric,compressed,no-compressed,percent difference
+system.cpu0.fetch.icacheSquashes,3624743,13004,99.641
+system.cpu1.fetch.icacheSquashes,1752532,10651,99.392
+system.cpu1.icache.demandMshrHits::cpu1.inst,311,77,75.241
+system.cpu1.icache.demandMshrHits::total,311,77,75.241
+system.cpu1.icache.overallMshrHits::cpu1.inst,311,77,75.241
+system.cpu1.icache.overallMshrHits::total,311,77,75.241
+system.cpu1.icache.ReadReq.mshrHits::cpu1.inst,311,77,75.241
+system.cpu1.icache.ReadReq.mshrHits::total,311,77,75.241
+system.cpu0.fetch.icacheStallCycles,14501882,3680342,74.622
+system.cpu1.fetch.icacheStallCycles,7001831,1782155,74.547
+system.cpu0.icache.demandMshrHits::cpu0.inst,871,255,70.723
+system.cpu0.icache.demandMshrHits::total,871,255,70.723
+system.cpu0.icache.overallMshrHits::cpu0.inst,871,255,70.723
+system.cpu0.icache.overallMshrHits::total,871,255,70.723
+system.cpu0.icache.ReadReq.mshrHits::cpu0.inst,871,255,70.723
+system.cpu0.icache.ReadReq.mshrHits::total,871,255,70.723
