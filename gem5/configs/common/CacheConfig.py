@@ -71,7 +71,8 @@ def _get_cache_opts(level, options):
                  "MultiCompressor": MultiCompressor(),
                  "PerfectCompressor": PerfectCompressor(),
                  "RepeatedQwordsCompressor": RepeatedQwordsCompressor(),
-                 "ZeroCompressor": ZeroCompressor()
+                 "ZeroCompressor": ZeroCompressor(),
+                 "BDI": BDI()
                 }
 
     print("options", options)
