@@ -50,6 +50,6 @@ for idx, prog in enumerate(prog_names):
             cmd = get_cmd(compressor, prog, options, core_val, arch)
             os.system(cmd)
             i += 1
-            print("FINISHED iteration {i}\n\n\n\n\n")
+            print(f"FINISHED iteration {i}\n\n\n\n\n")
 
 print("DONE")
