@@ -39,8 +39,8 @@ core_amnt = [1, 2, 4]
 prog_names = ["FFT", "LU", "RADIX"]
 prog_options = ["-m16", "-n512", "-n1048576"]
 
-arch = "RISCV" # or "X86"
-
+# arch = "RISCV" # or "X86"
+arch = "X86"
 i = 0
 for idx, prog in enumerate(prog_names):
     for core_val in core_amnt:
@@ -51,5 +51,9 @@ for idx, prog in enumerate(prog_names):
             os.system(cmd)
             i += 1
             print(f"FINISHED iteration {i}\n\n\n\n\n")
+
+    #         break
+    #     break
+    # break
 
 print("DONE")
