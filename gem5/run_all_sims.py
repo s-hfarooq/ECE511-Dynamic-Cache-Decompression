@@ -6,7 +6,7 @@ def get_cmd(compressor_name, prog_name, prog_options, num_core, arch):
     else:
         cpu_type = "X86O3CPU"
 
-    return f"""build/{arch}/gem5.opt --outdir=benchmarks/results/baseline/{prog_name}/{compressor_name}/ configs/example/se.py \
+    return f"""build/{arch}/gem5.opt --outdir=benchmarks/results/baseline/{prog_name}/{num_core}/{compressor_name}/ configs/example/se.py \
                 --cpu-type={cpu_type} \
                 --cpu-clock=3GHz \
                 --cacheline_size=64 \
