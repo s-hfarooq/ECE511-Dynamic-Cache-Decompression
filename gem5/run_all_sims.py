@@ -1,6 +1,6 @@
 import os
 
-def get_cmd(compressor_name, prog_name, num_core, arch):
+def get_cmd(compressor_name, prog_name, prog_options, num_core, arch):
     return f"""build/{arch}/gem5.opt --outdir=benchmarks/results/baseline/{prog_name}/{compressor_name}/ configs/example/se.py \
                 --cpu-type=RiscvO3CPU \
                 --cpu-clock=3GHz \
@@ -20,7 +20,7 @@ def get_cmd(compressor_name, prog_name, num_core, arch):
                 --l3_tags="CompressedTags" \
                 --l3_compressor="{compressor_name}" \
                 --cmd=benchmarks/{arch}/{prog_name} \
-                --options="-p2 -m16"
+                --options="{prog_options}"
             """
 
 all_compressors = [
@@ -32,14 +32,16 @@ all_compressors = [
 
 core_amnt = [1, 2, 4]
 prog_names = ["FFT", "LU", "RADIX"]
+prog_options = ["-m16", "-n512", "-n1048576"]
 
 arch = "RISCV" # or "X86"
 
-for prog in prog_names:
+for idx, prog in enumerate(prog_names):
     for core_val in core_amnt:
         for compressor in all_compressors:
             print(f"running compressor={compressor}, prog={prog}, core_val={core_val}, arch={arch}") 
-            cmd = get_cmd(compressor, prog, core_val, arch)
+            options = f"-p{core_val} {prog_options[idx]}"
+            cmd = get_cmd(compressor, prog, options, core_val, arch)
             os.system(cmd)
             print("FINISHED RUN\n\n\n\n\n")
 
