@@ -1,8 +1,13 @@
 import os
 
 def get_cmd(compressor_name, prog_name, prog_options, num_core, arch):
+    if "RISCV" in arch:
+        cpu_type = "RiscvO3CPU"
+    else:
+        cpu_type = "X86O3CPU"
+
     return f"""build/{arch}/gem5.opt --outdir=benchmarks/results/baseline/{prog_name}/{compressor_name}/ configs/example/se.py \
-                --cpu-type=RiscvO3CPU \
+                --cpu-type={cpu_type} \
                 --cpu-clock=3GHz \
                 --cacheline_size=64 \
                 --caches \
@@ -36,6 +41,7 @@ prog_options = ["-m16", "-n512", "-n1048576"]
 
 arch = "RISCV" # or "X86"
 
+i = 0
 for idx, prog in enumerate(prog_names):
     for core_val in core_amnt:
         for compressor in all_compressors:
@@ -43,6 +49,7 @@ for idx, prog in enumerate(prog_names):
             options = f"-p{core_val} {prog_options[idx]}"
             cmd = get_cmd(compressor, prog, options, core_val, arch)
             os.system(cmd)
-            print("FINISHED RUN\n\n\n\n\n")
+            i += 1
+            print("FINISHED iteration {i}\n\n\n\n\n")
 
 print("DONE")
