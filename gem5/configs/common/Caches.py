@@ -79,7 +79,8 @@ class L3Cache(Cache):
     mshrs = 512
     tgts_per_mshr = 20
     write_buffers = 256
-
+    tags = CompressedTags()
+    compressor = BDI()
 
 class IOCache(Cache):
     assoc = 8

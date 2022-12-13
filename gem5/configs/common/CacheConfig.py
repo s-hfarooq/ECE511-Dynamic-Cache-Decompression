@@ -55,6 +55,27 @@ def _get_hwp(hwp_option):
 def _get_cache_opts(level, options):
     opts = {}
 
+    name_dict = {"CompressedTags": CompressedTags(), 
+                 "BaseCacheCompressor": BaseCacheCompressor(),
+                 "BaseDictionaryCompressor": BaseDictionaryCompressor(),
+                 "Base64Delta8": Base64Delta8(),
+                 "Base64Delta16": Base64Delta16(),
+                 "Base64Delta32": Base64Delta32(),
+                 "Base32Delta8": Base32Delta8(),
+                 "Base32Delta16": Base32Delta16(),
+                 "Base16Delta8": Base16Delta8(),
+                 "CPack": CPack(),
+                 "FPC": FPC(),
+                 "FPCD": FPCD(),
+                 "FrequentValuesCompressor": FrequentValuesCompressor(),
+                 "MultiCompressor": MultiCompressor(),
+                 "PerfectCompressor": PerfectCompressor(),
+                 "RepeatedQwordsCompressor": RepeatedQwordsCompressor(),
+                 "ZeroCompressor": ZeroCompressor()
+                }
+
+    print("options", options)
+
     size_attr = '{}_size'.format(level)
     if hasattr(options, size_attr):
         opts['size'] = getattr(options, size_attr)
@@ -66,6 +87,18 @@ def _get_cache_opts(level, options):
     prefetcher_attr = '{}_hwp_type'.format(level)
     if hasattr(options, prefetcher_attr):
         opts['prefetcher'] = _get_hwp(getattr(options, prefetcher_attr))
+
+    compressor_attr = '{}_compressor'.format(level)
+    if hasattr(options, compressor_attr):
+        print(compressor_attr)
+        print(getattr(options, compressor_attr))
+        opts['compressor'] = name_dict[getattr(options, compressor_attr)]
+
+    tags_attr = '{}_tags'.format(level)
+    if hasattr(options, tags_attr):
+        opts['tags'] = name_dict[getattr(options, tags_attr)]
+
+    print("opts:", opts)
 
     return opts
 
@@ -120,8 +153,7 @@ def config_cache(options, system):
         #                             assoc=options.l2_assoc)
 
         system.l3 = l3_cache_class(clk_domain=system.cpu_clk_domain,
-                                    size=options.l3_size,
-                                    assoc=options.l3_assoc)
+                                    **_get_cache_opts('l3', options))
 
         # system.tol2bus = L2XBar(clk_domain = system.cpu_clk_domain)
         system.tol3bus = L2XBar(clk_domain = system.cpu_clk_domain)

@@ -1,4 +1,4 @@
-build/RISCV/gem5.opt --outdir=benchmarks/results/baseline/FFT/ configs/example/se.py \
+build/RISCV/gem5.opt --outdir=benchmarks/results/baseline/FFT/ZeroCompressor/ configs/example/se.py \
     --cpu-type=RiscvO3CPU \
     --cpu-clock=3GHz \
     --cacheline_size=64 \
@@ -14,5 +14,7 @@ build/RISCV/gem5.opt --outdir=benchmarks/results/baseline/FFT/ configs/example/s
     --l3cache \
     --l3_size=6MB \
     --l3_assoc=24 \
+    --l3_tags="CompressedTags" \
+    --l3_compressor="ZeroCompressor" \
     --cmd=benchmarks/riscv/FFT \
     --options="-p2 -m16"
