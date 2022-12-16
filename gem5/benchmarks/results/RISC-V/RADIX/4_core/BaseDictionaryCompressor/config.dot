@@ -5561,7 +5561,7 @@ fontsize=14;
 label="redirect_paths0 \n: RedirectPath";
 shape=Mrecord;
 style="rounded, filled";
-tooltip="app_path&#61;/proc&#10;\eventq_index&#61;0&#10;\host_paths&#61;benchmarks/results/baseline/RADIX/4/BaseDictionaryCompressor//fs/proc";
+tooltip="app_path&#61;/proc&#10;\eventq_index&#61;0&#10;\host_paths&#61;benchmarks/results/RISC-V/RADIX/4/BaseDictionaryCompressor//fs/proc";
 }
 
 subgraph cluster_system_redirect_paths1 {
@@ -5573,7 +5573,7 @@ fontsize=14;
 label="redirect_paths1 \n: RedirectPath";
 shape=Mrecord;
 style="rounded, filled";
-tooltip="app_path&#61;/sys&#10;\eventq_index&#61;0&#10;\host_paths&#61;benchmarks/results/baseline/RADIX/4/BaseDictionaryCompressor//fs/sys";
+tooltip="app_path&#61;/sys&#10;\eventq_index&#61;0&#10;\host_paths&#61;benchmarks/results/RISC-V/RADIX/4/BaseDictionaryCompressor//fs/sys";
 }
 
 subgraph cluster_system_redirect_paths2 {
@@ -5585,7 +5585,7 @@ fontsize=14;
 label="redirect_paths2 \n: RedirectPath";
 shape=Mrecord;
 style="rounded, filled";
-tooltip="app_path&#61;/tmp&#10;\eventq_index&#61;0&#10;\host_paths&#61;benchmarks/results/baseline/RADIX/4/BaseDictionaryCompressor//fs/tmp";
+tooltip="app_path&#61;/tmp&#10;\eventq_index&#61;0&#10;\host_paths&#61;benchmarks/results/RISC-V/RADIX/4/BaseDictionaryCompressor//fs/tmp";
 }
 
 subgraph cluster_system_workload {

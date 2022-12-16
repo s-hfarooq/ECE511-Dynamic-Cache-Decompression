@@ -40,7 +40,7 @@
                 "app_path": "/proc",
                 "eventq_index": 0,
                 "host_paths": [
-                    "benchmarks/results/baseline/RADIX/4/FPCD//fs/proc"
+                    "benchmarks/results/RISC-V/RADIX/4/FPCD//fs/proc"
                 ]
             },
             {
@@ -51,7 +51,7 @@
                 "app_path": "/sys",
                 "eventq_index": 0,
                 "host_paths": [
-                    "benchmarks/results/baseline/RADIX/4/FPCD//fs/sys"
+                    "benchmarks/results/RISC-V/RADIX/4/FPCD//fs/sys"
                 ]
             },
             {
@@ -62,7 +62,7 @@
                 "app_path": "/tmp",
                 "eventq_index": 0,
                 "host_paths": [
-                    "benchmarks/results/baseline/RADIX/4/FPCD//fs/tmp"
+                    "benchmarks/results/RISC-V/RADIX/4/FPCD//fs/tmp"
                 ]
             }
         ],
